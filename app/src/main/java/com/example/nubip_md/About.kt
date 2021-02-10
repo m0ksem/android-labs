@@ -2,6 +2,7 @@ package com.example.nubip_md
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 
 class About : AppCompatActivity() {
@@ -13,6 +14,7 @@ class About : AppCompatActivity() {
         val specialtyName = findViewById<TextView>(R.id.specialty_name)
         val courseAndGroup = findViewById<TextView>(R.id.course_and_group)
         val faculty = findViewById<TextView>(R.id.faculty)
+        val avatar = findViewById<ImageView>(R.id.avatar)
 
         // Here some API request mock
 
@@ -20,5 +22,6 @@ class About : AppCompatActivity() {
         specialtyName.text = "Software engineering"
         courseAndGroup.text = "ipz19008bsk 2 st"
         faculty.text = "Information Technology"
+        avatar.setImageResource(R.drawable.me)
     }
 }

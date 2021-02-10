@@ -14,7 +14,6 @@ class Expression : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_expression)
 
-
         val xInput = findViewById<EditText>(R.id.argument_x_input)
         val yInput = findViewById<EditText>(R.id.argument_y_input)
         val resultView = findViewById<TextView>(R.id.result)
