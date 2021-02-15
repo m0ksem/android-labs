@@ -152,6 +152,12 @@
             android:layout_height="wrap_content"
             android:text="Save result to file" />
 
+        <Button
+            android:id="@+id/open_result_to_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open result from file" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
