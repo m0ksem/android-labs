@@ -54,10 +54,11 @@ class Expression : AppCompatActivity() {
             var calculationResult = ""
             for (i in argumentStart..argumentEnd step argumentStep) {
                 val result = calculateExpression(i.toDouble(), argumentY)
+                val expressionResult = ExpressionResult(i.toDouble(), argumentY, result)
 
-                expressionResults!!.add(ExpressionResult(i.toDouble(), argumentY, result))
+                expressionResults!!.add(expressionResult)
 
-                calculationResult += result.toString() + '\n'
+                calculationResult += expressionResult.toString() + '\n'
             }
 
             resultView!!.text = calculationResult
@@ -107,7 +108,7 @@ class Expression : AppCompatActivity() {
         var fileContent = "";
 
         for (result in this.expressionResults!!) {
-            fileContent += "$result\n"
+            fileContent += "${result}\n"
         }
 
         outStream.write(fileContent.toByteArray())

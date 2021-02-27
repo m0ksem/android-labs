@@ -36,7 +36,15 @@
             android:id="@+id/calculate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="18dp"
             android:text="Calculate" />
+
+        <Button
+            android:id="@+id/graph_activity_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="View Graph" />
     </LinearLayout>
 
 
