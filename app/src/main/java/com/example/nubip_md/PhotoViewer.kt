@@ -3,27 +3,31 @@ package com.example.nubip_md
 import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.net.toFile
 import androidx.core.net.toUri
 import androidx.documentfile.provider.DocumentFile
 import com.github.chrisbanes.photoview.PhotoView
 import java.io.File
+import java.net.URLConnection
 
 
 class PhotoViewer : AppCompatActivity() {
-    private var files: List<File> = arrayListOf()
+    private var files: List<Uri> = arrayListOf()
     private var activeFileIndex: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_photo_viewer)
 
-        findViewById<Button>(R.id.photo_viewer_open_folder).setOnClickListener {
+        val imageView = findViewById<Button>(R.id.photo_viewer_open_folder)
+
+        imageView.setOnClickListener {
             val intent = Intent(Intent.ACTION_OPEN_DOCUMENT_TREE)
             intent.addCategory(Intent.CATEGORY_DEFAULT)
 
@@ -34,20 +38,31 @@ class PhotoViewer : AppCompatActivity() {
                     Toast.LENGTH_SHORT).show()
             }
         }
+
+        findViewById<Button>(R.id.prev_image_button).setOnClickListener {
+            this.setActiveFile(this.activeFileIndex - 1)
+        }
+
+        findViewById<Button>(R.id.next_image_button).setOnClickListener {
+            this.setActiveFile(this.activeFileIndex + 1)
+        }
     }
 
-    fun openFolder() {
-        val photoView = findViewById<View>(R.id.photo_view) as PhotoView
-//        photoView.setImageResource(R.drawable.image)
-    }
-
-    private val activeFile: File
+    private val activeFile: Uri
         get() = this.files[this.activeFileIndex]
 
     private fun setActiveFile(index: Int) {
+        if (index < 0) { return }
+        if (index > this.files.count() - 1) { return }
+
         this.activeFileIndex = index
         val photoView = findViewById<View>(R.id.photo_view) as PhotoView
-        photoView.setImageURI(this.activeFile.toUri())
+        photoView.setImageURI(this.activeFile)
+    }
+
+    private fun isImageFile(path: String?): Boolean {
+        val mimeType: String = URLConnection.guessContentTypeFromName(path)
+        return mimeType.startsWith("image")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -57,11 +72,9 @@ class PhotoViewer : AppCompatActivity() {
 
                 if (uri != null) {
                     val dir = DocumentFile.fromTreeUri(this, uri)?: return
-                    files = dir.listFiles().map {
-                        File(it.uri.path)
-                    }.filter {
-                        it.endsWith("png")
-                    }
+                    files = dir.listFiles()
+                        .map { it.uri }
+                        .filter { isImageFile(it.path) }
 
                     if (files.count() > 0) {
                         setActiveFile(0)
