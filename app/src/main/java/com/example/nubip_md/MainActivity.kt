@@ -31,5 +31,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, GraphActivity::class.java)
             startActivity(intent)
         }
+
+        findViewById<Button>(R.id.open_photo_viewer_button).setOnClickListener {
+            val intent = Intent(this, PhotoViewer::class.java)
+            startActivity(intent)
+        }
     }
 }
