@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/good_name_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="LR 2"
@@ -58,6 +58,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Open Image Viewer" />
+
+        <Button
+            android:id="@+id/oepn_auth_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Open DB" />
     </LinearLayout>
 
 

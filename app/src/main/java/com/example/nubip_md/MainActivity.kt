@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import com.example.nubip_md.lr6.Auth
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +35,11 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.open_photo_viewer_button).setOnClickListener {
             val intent = Intent(this, PhotoViewer::class.java)
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.oepn_auth_activity).setOnClickListener {
+            val intent = Intent(this, Auth::class.java)
             startActivity(intent)
         }
     }

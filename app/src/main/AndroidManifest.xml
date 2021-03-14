@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nubipmd">
-        <activity android:name=".PhotoViewer"></activity>
+        <activity android:name=".lr6.GoodActivity"></activity>
+        <activity android:name=".lr6.Auth" />
+        <activity android:name=".PhotoViewer" />
         <activity android:name=".GraphActivity" />
         <activity android:name=".About" />
         <activity android:name=".Expression" />
