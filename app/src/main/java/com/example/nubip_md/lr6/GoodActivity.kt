@@ -55,8 +55,7 @@ class GoodActivity : AppCompatActivity() {
 
         findViewById<FloatingActionButton>(R.id.start_add_good_activity_button).setOnClickListener {
             val intent = Intent(this, AddGoodActivity::class.java)
-            startActivity(intent)
-            this.renderList(db.getAllGood())
+            startActivityForResult(intent, 0)
         }
     }
 
@@ -75,5 +74,12 @@ class GoodActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         this.db.db.close()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 0) {
+            this.renderList(db.getAllGood())
+        }
     }
 }
