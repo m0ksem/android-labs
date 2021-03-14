@@ -18,7 +18,6 @@ class Auth : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
         db = DBHelper(this)
-        db.init()
 
         findViewById<Button>(R.id.auth_button).setOnClickListener {
             if (db.checkUser(this.username, this.password)) {

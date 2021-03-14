@@ -159,4 +159,21 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         cursor.close()
         return goodsList
     }
+
+    fun getFilteredGoods(): List<Good> {
+        val selectQuery = "SELECT  * FROM $TABLE_GOODS WHERE $COLUMN_GOOD_COUNT < ?"
+        val cursor = db.rawQuery(selectQuery, arrayOf("5"))
+        val goodsList = arrayListOf<Good>()
+        if (cursor.moveToFirst()) {
+            do {
+                goodsList.add(Good(id = cursor.getInt(cursor.getColumnIndex(COLUMN_GOOD_ID)),
+                    name = cursor.getString(cursor.getColumnIndex(COLUMN_GOOD_NAME)),
+                    price = cursor.getInt(cursor.getColumnIndex(COLUMN_GOOD_PRICE)),
+                    count = cursor.getInt(cursor.getColumnIndex(COLUMN_GOOD_COUNT))
+                ))
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        return goodsList
+    }
 }

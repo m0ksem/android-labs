@@ -1,5 +1,6 @@
 package com.example.nubip_md.lr6
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nubip_md.R
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class CustomAdapter(private val dataSet: List<Good>) :
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
@@ -44,11 +46,17 @@ class GoodActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_good)
         db = DBHelper(this)
-        val goods = db.getAllGood()
-        this.renderList(goods)
+        this.renderList(db.getAllGood())
 
         findViewById<Button>(R.id.goods_count_filter_button).setOnClickListener {
-            this.renderList(goods.filter { it.count < 5 })
+//            this.renderList(db.getAllGood().filter { it.count < 5 })
+            this.renderList(db.getFilteredGoods())
+        }
+
+        findViewById<FloatingActionButton>(R.id.start_add_good_activity_button).setOnClickListener {
+            val intent = Intent(this, AddGoodActivity::class.java)
+            startActivity(intent)
+            this.renderList(db.getAllGood())
         }
     }
 
