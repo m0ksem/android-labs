@@ -18,7 +18,7 @@ class CalculatorActivity : AppCompatActivity() {
         val filed = findViewById<LinearLayout>(R.id.calculation_filed)
         val firstTable = TableLayout(this)
         val secondTable = TableLayout(this)
-        (firstTable.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin = 60;
+
         renderTable(firstTable,3, 3)
         renderTable(secondTable,3, 3)
 
