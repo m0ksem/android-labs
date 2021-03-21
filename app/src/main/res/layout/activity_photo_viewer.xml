@@ -43,13 +43,19 @@
 
             <Button
                 android:id="@+id/prev_image_button"
-                android:layout_width="204dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="Prev" />
 
             <Button
-                android:id="@+id/next_image_button"
+                android:id="@+id/play_image_button"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Play" />
+
+            <Button
+                android:id="@+id/next_image_button"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Next" />

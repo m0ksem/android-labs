@@ -5,15 +5,14 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.MotionEvent
+import android.os.Handler
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.net.toUri
 import androidx.documentfile.provider.DocumentFile
 import com.github.chrisbanes.photoview.PhotoView
-import java.io.File
 import java.net.URLConnection
 
 
@@ -45,6 +44,29 @@ class PhotoViewer : AppCompatActivity() {
 
         findViewById<Button>(R.id.next_image_button).setOnClickListener {
             this.setActiveFile(this.activeFileIndex + 1)
+        }
+
+        var direction = 1
+        val delay: Long = 3000
+        val handler = Handler()
+        val runnable: Runnable = object : Runnable {
+            override fun run() {
+                setActiveFile(activeFileIndex + direction)
+                handler.postDelayed(this, delay)
+                if (activeFileIndex <= 0) { direction = -direction }
+                if (activeFileIndex >= files.count() - 1) { direction = -direction }
+            }
+        }
+
+        var isPlaying = false
+
+        findViewById<Button>(R.id.play_image_button).setOnClickListener {
+            if (isPlaying) {
+                handler.removeCallbacks(runnable);
+            } else {
+                handler.postDelayed(runnable, delay);
+            }
+            isPlaying = !isPlaying
         }
     }
 

@@ -65,6 +65,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Open DB" />
+
+        <Button
+            android:id="@+id/oepn_calculator_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Matrix Calculator" />
     </LinearLayout>
 
 

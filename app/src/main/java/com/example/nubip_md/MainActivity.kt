@@ -42,5 +42,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, Auth::class.java)
             startActivity(intent)
         }
+
+        findViewById<Button>(R.id.oepn_calculator_activity).setOnClickListener {
+            val intent = Intent(this, CalculatorActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
