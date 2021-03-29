@@ -29,23 +29,40 @@
             android:id="@+id/calculate_matrix"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:text="Calculate" />
+            android:text="+" />
 
-        <EditText
-            android:id="@+id/operation"
+        <Button
+            android:id="@+id/calculate_matrix2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="+" />
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:text="-" />
+
+        <Button
+            android:id="@+id/calculate_matrix3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:text="*" />
+
+        <Button
+            android:id="@+id/calculate_matrix4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:text="D" />
+
     </LinearLayout>
 
     <TextView
         android:id="@+id/result_text_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

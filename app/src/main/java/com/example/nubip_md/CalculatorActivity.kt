@@ -1,5 +1,6 @@
 package com.example.nubip_md
 
+import android.R.attr.*
 import android.os.Bundle
 import android.text.InputType
 import android.text.method.DigitsKeyListener
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
+
 
 typealias Matrix = MutableList<MutableList<Int>>
 
@@ -19,29 +21,41 @@ class CalculatorActivity : AppCompatActivity() {
         val firstTable = TableLayout(this)
         val secondTable = TableLayout(this)
 
-        renderTable(firstTable,3, 3)
-        renderTable(secondTable,3, 3)
+        renderTable(firstTable,5, 5)
+        renderTable(secondTable,5, 5)
 
         findViewById<Button>(R.id.calculate_matrix).setOnClickListener {
-            val operation = findViewById<EditText>(R.id.operation).text.toString()
             val matrix1 = readMatrixFromTable(firstTable)
             val matrix2 = readMatrixFromTable(secondTable)
 
-            if (operation == "+") {
-                showResult(addTwoMatrix(matrix1, matrix2))
-            }
-            if (operation == "-") {
-                showResult(subTwoMatrix(matrix1, matrix2))
-            }
-            if (operation == "*") {
-                showResult(mulTwoMatrix(matrix1, matrix2))
-            }
-            if (operation == "D") {
-                findViewById<TextView>(R.id.result_text_view).text = determinantMatrix(matrix1).toString()
-            }
+            showResult(addTwoMatrix(matrix1, matrix2))
         }
 
-        filed.addView(firstTable)
+        findViewById<Button>(R.id.calculate_matrix2).setOnClickListener {
+            val matrix1 = readMatrixFromTable(firstTable)
+            val matrix2 = readMatrixFromTable(secondTable)
+
+            showResult(subTwoMatrix(matrix1, matrix2))
+        }
+
+        findViewById<Button>(R.id.calculate_matrix3).setOnClickListener {
+            val matrix1 = readMatrixFromTable(firstTable)
+            val matrix2 = readMatrixFromTable(secondTable)
+
+            showResult(mulTwoMatrix(matrix1, matrix2))
+        }
+
+        findViewById<Button>(R.id.calculate_matrix4).setOnClickListener {
+            val matrix1 = readMatrixFromTable(firstTable)
+
+            findViewById<TextView>(R.id.result_text_view).text = determinantMatrix(matrix1).toString()
+        }
+
+        val topLayout = LinearLayout(this)
+        topLayout.setPadding(0, 0, 0, 150)
+        topLayout.addView(firstTable)
+
+        filed.addView(topLayout)
         filed.addView(secondTable)
     }
 
@@ -71,9 +85,9 @@ class CalculatorActivity : AppCompatActivity() {
         val matrix: Matrix = arrayListOf()
         for (i in 0 until matrix1.size) {
             matrix.add(arrayListOf())
-            for (j in 0 until matrix1[0].size) {
+            for (j in 0 until matrix1[i].size) {
                 matrix[i].add(0)
-                for (k in 0 until matrix1[0].size) {
+                for (k in 0 until matrix1[i].size) {
                     matrix[i][j] += matrix1[i][k] * matrix2[k][j]
                 }
             }
@@ -145,7 +159,9 @@ class CalculatorActivity : AppCompatActivity() {
                         trArray.add(number)
                     }
                 }
-                matrix.add(trArray)
+                if (trArray.size > 0) {
+                    matrix.add(trArray)
+                }
             }
         }
         return matrix
@@ -154,6 +170,7 @@ class CalculatorActivity : AppCompatActivity() {
     private fun matrixToString(matrix: Matrix): String {
         var str = ""
         for (tr in matrix) {
+            if (tr.size == 0) { continue }
             str += tr.toString()
             str += "\n"
         }
