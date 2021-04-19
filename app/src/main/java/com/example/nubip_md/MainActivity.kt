@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import com.example.nubip_md.lr10.Geocode
 import com.example.nubip_md.lr6.Auth
 import com.example.nubip_md.lr7.AddressBook
 import com.example.nubip_md.lr8.Gps
@@ -63,6 +64,11 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.open_map).setOnClickListener {
             val intent = Intent(this, Maps::class.java)
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.open_geocode).setOnClickListener {
+            val intent = Intent(this, Geocode::class.java)
             startActivity(intent)
         }
     }
