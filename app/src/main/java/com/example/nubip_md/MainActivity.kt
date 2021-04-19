@@ -8,6 +8,7 @@ import android.widget.TextView
 import com.example.nubip_md.lr6.Auth
 import com.example.nubip_md.lr7.AddressBook
 import com.example.nubip_md.lr8.Gps
+import com.example.nubip_md.lr9.Maps
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +58,11 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.start_gps_activity).setOnClickListener {
             val intent = Intent(this, Gps::class.java)
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.open_map).setOnClickListener {
+            val intent = Intent(this, Maps::class.java)
             startActivity(intent)
         }
     }
