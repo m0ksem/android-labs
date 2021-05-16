@@ -78,6 +78,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout14"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
@@ -90,6 +91,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
             android:text="My contacts" />
 
         <Button
@@ -97,6 +100,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
             android:text="GPS" />
 
         <Button
@@ -104,6 +109,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
             android:text="Open map" />
 
         <Button
@@ -114,6 +121,22 @@
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:text="Geocode" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout14">
+
+        <Button
+            android:id="@+id/route_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Create route" />
     </LinearLayout>
 
 

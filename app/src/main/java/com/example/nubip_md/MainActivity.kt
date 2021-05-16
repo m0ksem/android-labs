@@ -10,6 +10,7 @@ import com.example.nubip_md.lr6.Auth
 import com.example.nubip_md.lr7.AddressBook
 import com.example.nubip_md.lr8.Gps
 import com.example.nubip_md.lr9.Maps
+import com.example.nubip_md.sr2.Route
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,6 +70,11 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.open_geocode).setOnClickListener {
             val intent = Intent(this, Geocode::class.java)
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.route_button).setOnClickListener {
+            val intent = Intent(this, Route::class.java)
             startActivity(intent)
         }
     }

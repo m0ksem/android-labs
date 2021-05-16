@@ -15,11 +15,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nubipmd">
-        <activity android:name=".lr10.Geocode"></activity>
+        <activity android:name=".sr2.Route"></activity>
+        <activity android:name=".lr10.Geocode" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAwdxfh_tac94qgQ9men_Y4sU9EZ-kMmkA" />
+            android:value="AIzaSyCM9Y0xPU7Hc3dC42XXpWwZ5PeeFStJpwk" />
 
         <activity android:name=".lr9.Maps" />
         <activity android:name=".lr8.Gps" />
